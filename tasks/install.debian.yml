@@ -1,0 +1,21 @@
+---
+
+- name: Downloading release package
+  get_url:
+    url: "https://apt.puppetlabs.com/puppetlabs-release-pc1-{{ ansible_distribution_release }}.deb"
+    dest: /tmp/puppet.deb
+
+- name: Installling release package
+  apt:
+    deb: "/tmp/puppet.deb"
+    state: present
+
+- name: Clean up
+  file:
+    path: "/tmp/puppet.deb"
+    state: absent
+
+- name: Updating apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 600
