@@ -1,0 +1,6 @@
+---
+
+- name: restart puppetserver
+  service:
+    name: puppetserver
+    state: restarted

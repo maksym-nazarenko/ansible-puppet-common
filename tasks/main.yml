@@ -1,0 +1,19 @@
+---
+
+- name: Downloading release package
+  get_url:
+    url: "https://apt.puppetlabs.com/puppetlabs-release-pc1-{{ ansible_distribution_release }}.deb"
+    dest: /tmp/puppet.deb
+  when: ansible_os_family == "Debian"
+
+- name: Installling release package
+  apt:
+    deb: "/tmp/puppet.deb"
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Clean up
+  file:
+    path: "/tmp/puppet.deb"
+    state: absent
+  when: ansible_os_family == "Debian"
