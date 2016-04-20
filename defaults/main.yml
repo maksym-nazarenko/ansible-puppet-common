@@ -3,3 +3,4 @@
 puppet_conf_dir: /etc/puppetlabs/puppet
 puppet_node_name: "{{ inventory_hostname }}"
 puppet_agent_service_name: puppet
+puppet_environment: production
